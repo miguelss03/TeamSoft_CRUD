@@ -19,11 +19,12 @@ Faça as requisições HTTP no seu software conforme a descrição da imagem.
 
 
 # como testar o projeto
-Para executar os testes de execução deste projeto voce deve seguir o padrão que de edentação/formatação que esta na imagem, sem errar o nome dos campos ou os items que vai colocar.
+Para executar os testes de execução deste projeto voce deve seguir o padrão de edentação/formatação que esta na imagem, sem errar o nome dos campos ou os items que vai colocar.
 
-A imagem a seguir simula a criação de um endereço em um Cliente já existente.
-Na parte esquerda na imagem é possivel ver as rotas que cada operação faz de acordo com cada entidade (Client/Adress). Monte o seu software de teste de requisições HTTP no mesmo padrão da imagem.
-
+A imagem a seguir simula a criação com o metodo POST de um endereço em um Cliente já existente.
+Na parte direita da foto é demonstrado o status_code da rota e o seu resultado.
+Na parte esquerda na imagem é possivel ver as rotas que cada operação faz (Cadastro, Leitura/Busca, Alteração e Exclusão) de acordo com cada entidade (Client/Adress). 
+Monte o seu software de teste de requisições HTTP no mesmo padrão da imagem.
 
 ![CRUD](https://user-images.githubusercontent.com/69445570/231390191-df5c05ac-4caf-4aee-bd95-4bb953b096a7.png)
 
