@@ -14,7 +14,8 @@ Antes de rodar o projeto, vá na pasta `db` e abra o arquivo `db.ts`, nele se en
 
 Faça as requisições HTTP no seu software conforme a descrição da imagem.
 
-# comando para inicializar o projeto:
+# Comando para inicializar o projeto
+-- npm init -y
 -- npm run dev
 
 
