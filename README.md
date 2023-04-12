@@ -200,14 +200,286 @@ const addressValidationSchema = Joi.object({
 });
 
 export { Address, addressSchema, IAddress, addressValidationSchema };
+`
+
+#controllers
+Dentro da pasta `controllers` temos as nossa controllers `adress.Controller.ts` e `client.ts`, É aqui dentro que fazemos todo o tratamento das rotas e das requisições `HTTP` da nossa aplicação. Utilizando os metódos de um `CRUD` `CREATE, READ, UPDATE e DELETE` que são comandos de execução que fazem o Cadastro, Leitura, Alteração e Remoção dos nossos clientes e nosso endereço que podem ter 1 ou mais endereços.
+
+`
+import { Request, Response } from "express";
+import { Client, IClient } from "../models/Client";
+
+export const clientController = {
+  // metodo de criação -> CREAT
+  create: async (req: Request, res: Response) => {
+    try {
+      const client: IClient = req.body;
+      // Insere o cliente criado no banco de dados
+      const clients = await Client.create(client);
+      // Envia a resposta
+      res.status(201).json({ clients, msg: "Cliente criado com sucesso!" });
+    } catch (error) {
+      console.log("O erro ocorreu aqui: ", error);
+      res.status(500).json({ error: "Erro ao criar o cliente" });
+    }
+  },
+  //metodo de consulta -> READ
+  getAll: async (req: Request, res: Response) => {
+    try {
+      const clients = await Client.find()
+
+      res.json(clients);
+
+    } catch (error) {
+      console.log("O erro ocorreu aqui: ", error);
+      res.status(500).json({ error: "Erro ao buscar clientes" });
+    }
+  },
+  //metodo de consulta por identificador unico (id) -> READ expecify
+  get: async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+      const client = await Client.findById(id)
+
+      if (!client) {
+        res.status(404).json({ msg: "Cliente não encontrado" })
+        return;
+      }
+
+      res.json(client)
+    } catch (error) {
+      res.status(500).json({ error: "Erro ao buscar clientes" });
+    }
+  },
+  //metodo de atualização atraves do ID -> UPDATE
+  update: async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+      const client: IClient = req.body;
+
+      const updateClient = await Client.findByIdAndUpdate(id, client);
+
+      if (!updateClient) {
+        res.status(404).json({ msg: "Cliente não encontrado" })
+        return;
+      }
+
+      res.status(200).json({ client, msg: "ATUALIZADO COM SUCESSO" })
+
+    } catch (error) {
+      console.log("O erro ocorreu aqui: ", error);
+      res.status(500).json({ error: "Erro atualizar cliente" });
+    }
+  },
+  //metodo de remoção do cliente atraves do  ID -> DELETE
+  delete: async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+      const client = await Client.findById(id);
+
+      if (!client) {
+        res.status(404).json({ msg: "Cliente não encontrado" })
+        return;
+      }
+
+      const deletedClient = await Client.findByIdAndDelete(id)
+      res.status(200).json(deletedClient)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
 
+};
+`
+
+A mesma situação se repete no arquivo `adressControllers.ts`:
+
+`
+import { Request, Response } from "express";
+import { Client, IClient } from "../models/Client";
+
+export const clientController = {
+  // metodo de criação -> CREAT
+  create: async (req: Request, res: Response) => {
+    try {
+      const client: IClient = req.body;
+      // Insere o cliente criado no banco de dados
+      const clients = await Client.create(client);
+      // Envia a resposta
+      res.status(201).json({ clients, msg: "Cliente criado com sucesso!" });
+    } catch (error) {
+      console.log("O erro ocorreu aqui: ", error);
+      res.status(500).json({ error: "Erro ao criar o cliente" });
+    }
+  },
+  //metodo de consulta -> READ
+  getAll: async (req: Request, res: Response) => {
+    try {
+      const clients = await Client.find()
+
+      res.json(clients);
+
+    } catch (error) {
+      console.log("O erro ocorreu aqui: ", error);
+      res.status(500).json({ error: "Erro ao buscar clientes" });
+    }
+  },
+  //metodo de consulta por identificador unico (id) -> READ expecify
+  get: async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+      const client = await Client.findById(id)
+
+      if (!client) {
+        res.status(404).json({ msg: "Cliente não encontrado" })
+        return;
+      }
+
+      res.json(client)
+    } catch (error) {
+      res.status(500).json({ error: "Erro ao buscar clientes" });
+    }
+  },
+  //metodo de atualização atraves do ID -> UPDATE
+  update: async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+      const client: IClient = req.body;
+
+      const updateClient = await Client.findByIdAndUpdate(id, client);
+
+      if (!updateClient) {
+        res.status(404).json({ msg: "Cliente não encontrado" })
+        return;
+      }
+
+      res.status(200).json({ client, msg: "ATUALIZADO COM SUCESSO" })
+
+    } catch (error) {
+      console.log("O erro ocorreu aqui: ", error);
+      res.status(500).json({ error: "Erro atualizar cliente" });
+    }
+  },
+  //metodo de remoção do cliente atraves do  ID -> DELETE
+  delete: async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id;
+      const client = await Client.findById(id);
+
+      if (!client) {
+        res.status(404).json({ msg: "Cliente não encontrado" })
+        return;
+      }
+
+      const deletedClient = await Client.findByIdAndDelete(id)
+      res.status(200).json(deletedClient)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+};
+`
+
+#db
+Na pasta db temos o arquivo `db.ts` que faz a conexão do nosso banco dados, onde a constante `connectDB` é exportada diretamente para o arquivo na raiz do projeto `App.ts`.
+
+
+#routes
+Já na pasta routes temos os arquivos `addresses.ts`, `clients.ts` e `routes.ts` que são os arquivos de rotas individuais definidas dentro do nosso `controller` das nossas entidades por onde fazemos o registro de clientes e endereços. Dentro de cada uma dos dois arquivos temos das entiddades temos as rotas do tipo `GET, POST, PUT e DELETE` e no arquivo de rotas principais da nossa aplicação demos os seu direcionamento.
+
+##addresses.ts
+
+`
+import { Router } from "express";
+import { adresseController } from "../controllers/adressController";
+
+const router: Router = Router();
+
+router
+    .route("/addresses")
+    // Rota para criação de um endereço e seus dados no banco de dados
+    .post((req, res) => adresseController.create(req, res))
+    // Rota para consulta de um endereço no banco de dados
+    .get((req, res) => adresseController.getAll(req, res))
+
+router
+    .route("/addresses/:id")
+    // Rota para consulta de um endereço expecifico no bando de dados
+    .get((req, res) => adresseController.get(req, res))
+    // Rota para Atualizar os dados de um endereço
+    .put((req, res) => adresseController.update(req, res))
+    // Rota para Deletar um endereço pelo seu id
+    .delete((req, res) => adresseController.delete(req, res))
+
+
+
+export default router;
+`
+
+##clients.ts
+
+`
+import { Router } from "express";
+import { clientController } from "../controllers/clientController";
+
+const router: Router = Router();
+
+router
+    .route("/clients")
+    // Rota para criação de um cliente e seus dados no banco de dados
+    .post((req, res) => clientController.create(req, res))
+    // Rota para consulta de um cliente no banco de dados
+    .get((req, res) => clientController.getAll(req, res));
+
+router
+    .route("/clients/:id")
+    // Rota para consulta de um cliente expecifico no bando de dados
+    .get((req, res) => clientController.get(req, res))
+    // Rota para Atualizar os dados de um cliente
+    .put((req, res) => clientController.update(req, res))
+    // Rota para Deletar um cliente pelo seu id
+    .delete((req, res) => clientController.delete(req, res))
+
+export default router;
+`
+
+
+##routes
+
+`
+import express from 'express';
+import { Router } from 'express';
+import clientRouter from './clients';
+import adressRouter from './addresses';
+
+const router: Router = express.Router();
+
+// rotas das entidades da aplicação
+router.use('/', clientRouter);
+router.use('/', adressRouter);
+
+export default router;
 `
 
 
 
-##Contro
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
