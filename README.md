@@ -29,7 +29,7 @@ Monte o seu software de teste de requisições HTTP no mesmo padrão da imagem.
 ![CRUD](https://user-images.githubusercontent.com/69445570/231390191-df5c05ac-4caf-4aee-bd95-4bb953b096a7.png)
 
 
-#Estrutura de pastas
+# Estrutura de pastas
 
 Logo quando se abre o projeto CRUD, temos a pasta e o arquivo `App.ts` que é por onde se inicia a nossa aplicação, nela temos a conexão com o banco de dados `MongoDB` e o `express` para gerenciar as requisições de diferentes verbos HTTP em diferentes URLs.
 
@@ -40,7 +40,7 @@ Logo quando se abre o projeto CRUD, temos a pasta e o arquivo `App.ts` que é po
 - db
 - routes
 
-#Models 
+# Models 
 Na pasta Models temos dos arquivos  `Adress.ts` e `Client.ts`, eles são as duas entidades da nossa aplicação, que dentro delas temos a criação dos seus requisitos individuais, como por exemplo no `Client` temos os campos `CNPJ`, `razaosocial`, `nome` `telefone` `addresses` como requisitos de dado.
 
 `
@@ -114,7 +114,7 @@ export { Client, IClient, clientSchema };
 
 Nele podemos ver que é utilizado o `Typescript` para a tipagem dos nossos dados, e o `mongoose` que é uma `lib` externa do banco `mongoDB` para tratarmos as nossas models dentro do banco de dados. E utilizamos o `Joi` como nossa ferramenta de validação dos campos.
 
-##A mesma coisa se repete no `Adress.ts`:
+## A mesma coisa se repete no `Adress.ts`:
 
 
 
@@ -213,7 +213,7 @@ export { Address, addressSchema, IAddress, addressValidationSchema };
 
 
 
-#controllers
+# controllers
 Dentro da pasta `controllers` temos as nossa controllers `adress.Controller.ts` e `client.ts`, É aqui dentro que fazemos todo o tratamento das rotas e das requisições `HTTP` da nossa aplicação. Utilizando os metódos de um `CRUD` `CREATE, READ, UPDATE e DELETE` que são comandos de execução que fazem o Cadastro, Leitura, Alteração e Remoção dos nossos clientes e nosso endereço que podem ter 1 ou mais endereços.
 
 
@@ -310,7 +310,7 @@ export const clientController = {
 
 
 
-##A mesma situação se repete no arquivo `adressControllers.ts`:
+## A mesma situação se repete no arquivo `adressControllers.ts`:
 
 
 
@@ -403,14 +403,14 @@ export const clientController = {
 };
 `
 
-#db
+# db
 Na pasta db temos o arquivo `db.ts` que faz a conexão do nosso banco dados, onde a constante `connectDB` é exportada diretamente para o arquivo na raiz do projeto `App.ts`.
 
 
-#routes
+# routes
 Já na pasta routes temos os arquivos `addresses.ts`, `clients.ts` e `routes.ts` que são os arquivos de rotas individuais definidas dentro do nosso `controller` das nossas entidades por onde fazemos o registro de clientes e endereços. Dentro de cada uma dos dois arquivos temos das entiddades temos as rotas do tipo `GET, POST, PUT e DELETE` e no arquivo de rotas principais da nossa aplicação demos os seu direcionamento.
 
-##addresses.ts
+## addresses.ts
 
 `
 import { Router } from "express";
@@ -439,7 +439,7 @@ router
 export default router;
 `
 
-##clients.ts
+## clients.ts
 
 `
 import { Router } from "express";
@@ -467,7 +467,7 @@ export default router;
 `
 
 
-##routes
+## routes
 
 `
 import express from 'express';
