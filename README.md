@@ -205,7 +205,7 @@ export { Address, addressSchema, IAddress, addressValidationSchema };
 #controllers
 Dentro da pasta `controllers` temos as nossa controllers `adress.Controller.ts` e `client.ts`, É aqui dentro que fazemos todo o tratamento das rotas e das requisições `HTTP` da nossa aplicação. Utilizando os metódos de um `CRUD` `CREATE, READ, UPDATE e DELETE` que são comandos de execução que fazem o Cadastro, Leitura, Alteração e Remoção dos nossos clientes e nosso endereço que podem ter 1 ou mais endereços.
 
-`
+
 import { Request, Response } from "express";
 import { Client, IClient } from "../models/Client";
 
@@ -293,7 +293,7 @@ export const clientController = {
 
 
 };
-`
+
 
 A mesma situação se repete no arquivo `adressControllers.ts`:
 
