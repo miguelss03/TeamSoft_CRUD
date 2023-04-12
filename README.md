@@ -15,13 +15,16 @@ Antes de rodar o projeto, vá na pasta `db` e abra o arquivo `db.ts`, nele se en
 Faça as requisições HTTP no seu software conforme a descrição da imagem.
 
 # comando para inicializar o projeto:
-npm run dev
+## npm run dev
+
 
 # como testar o projeto
 Para executar os testes de execução deste projeto voce deve seguir o padrão que de edentação/formatação que esta na imagem, sem errar o nome dos campos ou os items que vai colocar.
 
 A imagem a seguir simula a criação de um endereço em um Cliente já existente.
 Na parte esquerda na imagem é possivel ver as rotas que cada operação faz de acordo com cada entidade (Client/Adress). Monte o seu software de teste de requisições HTTP no mesmo padrão da imagem.
+
+
 ![CRUD](https://user-images.githubusercontent.com/69445570/231390191-df5c05ac-4caf-4aee-bd95-4bb953b096a7.png)
 
 
