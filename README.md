@@ -1,5 +1,10 @@
+# Miguel S. Silva
+
 Esse projeto proposto pela TeamSoft é um desafio  com o obejtivo de criar as operações basicas de duas entidades chamadas:
-Cliente e Endereço. Ambos estão relacionados pois 1 cliente pode ter varios endereços e todos os endereços tem 1 cliente.
+Cliente e Endereço. Onde um cliente pode ter mais de 1 endereço
+
+# Setup do projeto
+
 
 # comando para inicializar o projeto:
 npm run dev
