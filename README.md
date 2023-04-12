@@ -3,20 +3,29 @@
 Esse projeto proposto pela TeamSoft é um desafio  com o obejtivo de criar as operações basicas de duas entidades chamadas:
 Cliente e Endereço. Onde um cliente pode ter mais de 1 endereço
 
-# Setup do projeto
+# Configurações do projeto
+- Node.js
+- Typescript
+- MongoDB 
+- Padrão MVC para os arquivos da aplicação
 
+# Sugestões:
+Antes de rodar o projeto, vá na pasta `db` e abra o arquivo `db.ts`, nele se encontra a função de conexão com o banco de dados MongoDB, como foi sugerido no projeto. Troque as devidas informações para as configurações da sua maquina
+
+Faça as requisições HTTP no seu software conforme a descrição da imagem.
 
 # comando para inicializar o projeto:
 npm run dev
 
+# como testar o projeto
+Para executar os testes de execução deste projeto voce deve seguir o padrão que de edentação/formatação que esta na imagem, sem errar o nome dos campos ou os items que vai colocar.
 
-- o principal arquivo da aplicação é o app.js. Nele temos a coneção do nosso servidor rodando na porta 3334 
-e a conexão com o banco MongoDB
-
-- Na pasta dbConnection.js fica a conexão que a nossa aplicação faz com o banco de dados logado em uma conta
-
-- 
+A imagem a seguir simula a criação de um endereço em um Cliente já existente.
+Na parte esquerda na imagem é possivel ver as rotas que cada operação faz de acordo com cada entidade (Client/Adress). Monte o seu software de teste de requisições HTTP no mesmo padrão da imagem.
+![CRUD](https://user-images.githubusercontent.com/69445570/231390191-df5c05ac-4caf-4aee-bd95-4bb953b096a7.png)
 
 
-# Padrão MVC
+
+
+
 
